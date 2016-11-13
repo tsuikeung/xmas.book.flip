@@ -1,0 +1,1 @@
+﻿var Key = { Copyright: "keung2016", Key: "wZKTZffz486ih3kWlN4f$a"};

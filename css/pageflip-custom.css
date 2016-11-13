@@ -1,0 +1,54 @@
+/*
+
+		Global Pageflip Styles
+		
+*/
+#pageflip {
+	width: 100%;
+	background: #ececec;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+}
+#pf-pagerin {
+	font-family: "Fauna One", "Lucida Grande", Helvetica, sans-serif;
+}
+#pf-stage {
+	background: #ececec;
+}
+/*
+	
+		Container HTML Page Styles
+		
+*/
+body {
+	margin: 0;
+}
+
+.pf-left-side{
+	background-color: #fff;
+}
+/*
+
+		template 1 - Meet Pageflip Styles
+
+*/
+img{
+	width: 100%;
+	height: auto;
+
+}
+.canClick, .langSelect{
+	cursor: pointer;
+}
+
+.langSelect{
+	font-family: "Fauna One", "Lucida Grande", Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+	list-style: none;
+	background: #ddd;
+	padding: 2px;
+	color: #777;
+	font-weight: bold;
+}
