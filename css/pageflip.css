@@ -275,8 +275,8 @@ body.w320 #pagerin {
 }
 #pf-controls.w480 .pf-left-buttons,
 #pf-controls.w320 .pf-left-buttons {
-
-	margin-left: 10px;
+	width: 100%;
+	margin-left: 0;
 	
 }
 #pf-controls.w480 .pf-control-bar-button,
