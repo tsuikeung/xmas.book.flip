@@ -117,8 +117,6 @@
 }
 .pf-left-buttons {
 	float: left;
-	width: 104px;
-	margin-left: 32px;	
 }
 .pf-right-buttons {
 	float: right;
@@ -286,7 +284,7 @@ body.w320 #pagerin {
 
 #pf-controls.w320 .pf-right-buttons,
 #pf-controls.w480 .pf-right-buttons {
-	width: 160px;
+	width: 120px;
 	margin-right: 0px;
 }
 #pf-controls.w480 .pf-right-buttons {

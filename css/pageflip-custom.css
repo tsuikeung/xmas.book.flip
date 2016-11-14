@@ -51,13 +51,36 @@ img{
 	padding: 2px;
 	color: #777;
 	font-weight: bold;
+	width: 100px;
+		display: block;
+}
+#returnBtn{
+	position: absolute;
+	z-index: 9999;
+	height: 10%;
+	width: 10%;
+	top: 70%;
+	 left: 50%;
+	display: block;
+	margin: auto;
+	   transform: translate(-50%, -50%);
+
 }
 
+#returnBtn img{
+	height: 100%;
+	width: auto;
+	cursor: pointer;
+	position: relative;
+}
 @media screen and (max-width: 768px){
 	
-	.pf-right-buttons{
-			display: none;
-		
+	
+	.langSelect{
+			
+		padding:2px 1px;
+		display: block;
+		width:20px;
 
 	}
 }

@@ -87,9 +87,7 @@ $( function() {
 		},
 		
 		id = getHashID();
-		gotoPage = function( p ) {
-				pageflip.gotoPage( p, true );
-			}
+			
 		/* MEET PAGEFLIP CUSTOM FUNCTIONS */
 			var animmode = 1, 
 				animbtns = [ "#animateontop", "#animateonvisible" ],
@@ -100,17 +98,23 @@ $( function() {
 				CustomPFEventHandler = {
 					onFlip: function( PN ) 	{ 
 						if( PN==18 ) $("#isflipping").addClass("selected");
+
 					},
 					onFlipEnd: function( PN ) {
 						if( PN==18 ) $("#isflipping").removeClass("selected");
+						
+
 					},
 					onTop: function( PN ) {
 						if( PN==21 && animmode==0 ) startLoop();
 						if( PN==18 ) $("#isontop").addClass("selected");
+						if(PN!=1)
+						 $("#returnBtn").delay( 5000 ).fadeIn();
 					},
 					onTopEnd: function( PN ) {
 						if( PN==21 && animmode==0 ) stopLoop();
 						if( PN==18 ) $("#isontop").removeClass("selected");
+						 $("#returnBtn").stop().fadeOut();
 					},
 					onLoad: function( PN ) {
 						if( PN==11 ) videoInit();
@@ -130,6 +134,9 @@ $( function() {
 							animation( animmode );
 						}
 						if( PN==18 ) $("#isvisible").addClass("selected");
+
+
+
 					},
 					onZoomIn: function( PN ) {
 						zooming = true;
@@ -140,7 +147,8 @@ $( function() {
 						setZoomFlag();
 					}
 				};
-				
+			
+
 			gotoPage = function( p ) {
 				pageflip.gotoPage( p, true );
 			}
@@ -212,6 +220,7 @@ $( function() {
 			$pageflip.pageflipInit( bookConfig[id], id );
 			pageflip = $pageflip.pageflip();
 			pageflip.setPFEventCallBack( CustomPFEventHandler );
+			$("#returnBtn").stop().fadeOut();
 		}
 	};
 	
