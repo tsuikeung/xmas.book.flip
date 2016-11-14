@@ -52,3 +52,12 @@ img{
 	color: #777;
 	font-weight: bold;
 }
+
+@media screen and (max-width: 768px){
+	
+	.pf-right-buttons{
+			display: none;
+		
+
+	}
+}
