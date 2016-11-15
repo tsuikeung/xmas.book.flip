@@ -28,6 +28,8 @@ $( function() {
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
 					SecondaryDragArea: 72,
+					PinchZoom:true,
+
 					
 					ControlbarFile: "common/controlbar_svg-chi.html",
 					SinglePageMode: true,
@@ -51,6 +53,7 @@ $( function() {
 					MarginBottom:50,
 					FullScale : true,
 					AlwaysOpened: false,
+					PinchZoom:true,
 					
 					CenterSinglePage: true,
 					DropShadowOpacity: 0.3,
