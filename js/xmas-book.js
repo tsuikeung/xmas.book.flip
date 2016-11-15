@@ -25,7 +25,7 @@ $( function() {
 					FlipShadowOpacity: 0.2,
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
-					SecondaryDragArea: 372,
+					SecondaryDragArea: 72,
 					
 					ControlbarFile: "common/controlbar_svg-chi.html",
 					SinglePageMode: true,
@@ -56,7 +56,7 @@ $( function() {
 					FlipShadowOpacity: 0.2,
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
-					SecondaryDragArea: 372,
+					SecondaryDragArea: 72,
 					AutoFlipLoop: 1,
 					ControlbarFile: "common/controlbar_svg-eng.html",
 					SinglePageMode: true,
@@ -204,6 +204,7 @@ $( function() {
 				
 	/* start the first book automatically! */
 		startPageflip = function( id ) {
+			$("#returnBtn").stop().fadeOut();
 		if( closing || id==loadedID ) return
 		if( loadedID ) {
 			/* we have a loaded book, so unload it first */
@@ -218,12 +219,12 @@ $( function() {
 			$pageflip.pageflipInit( bookConfig[id], id );
 			pageflip = $pageflip.pageflip();
 			pageflip.setPFEventCallBack( CustomPFEventHandler );
-			$("#returnBtn").stop().fadeOut();
 		}
 	};
 	
 	if( bookConfig[id] && defaultID!=id ) {  startID = id; } 
 	else { if( $("#"+id).length ) gotoAnchor( "#"+id ); }
+	$("#returnBtn").stop().fadeOut();
 
 	startPageflip( startID );
 
