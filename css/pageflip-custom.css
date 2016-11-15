@@ -73,6 +73,10 @@ img{
 	cursor: pointer;
 	position: relative;
 }
+#pageflip-controls{
+	background: #ececec;
+	padding: 8px 0 10px;
+}
 @media screen and (max-width: 768px){
 	
 	
