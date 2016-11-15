@@ -154,7 +154,7 @@ $( function() {
 			
 			 timerIncrement = function() {
 			    idleTime = idleTime + 1;
-			    if(pageflip.getPN() == 0 || !startCount){
+			    if(pageflip.getPN() == 0 || !startCount ||zooming){
 			    	//console.log("page"+pageflip.getPN());
 			    	idleTime=0;
 			    	//
