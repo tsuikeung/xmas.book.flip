@@ -27,7 +27,7 @@ $( function() {
 					FlipShadowOpacity: 0.2,
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
-					SecondaryDragArea: 72,
+					SecondaryDragArea: 372,
 					
 					Transparency: true,
 					ControlbarFile: "common/controlbar_svg-chi.html",
@@ -59,7 +59,7 @@ $( function() {
 					FlipShadowOpacity: 0.2,
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
-					SecondaryDragArea: 72,
+					SecondaryDragArea: 372,
 					AutoFlipLoop: 1,
 					Transparency: true,
 					ControlbarFile: "common/controlbar_svg-eng.html",
@@ -88,13 +88,6 @@ $( function() {
 		
 		id = getHashID();
 		
-		$("a[href*=#]").live( "click", function( e ) {
-			e.preventDefault();
-			var p = $(this.hash).position().top-80,
-				mp = $(document).height()-$(window).height(),
-				dest = ( p>mp )? mp: p;
-			$("html,body").stop().animate({scrollTop:dest}, 800,"swing");
-		});
 
 			
 		/* MEET PAGEFLIP CUSTOM FUNCTIONS */
