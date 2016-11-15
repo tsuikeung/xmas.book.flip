@@ -1,4 +1,4 @@
-﻿var startPageflip;
+var startPageflip;
 
 $( function() {
 	var $pageflip = $("#pageflip"),
