@@ -3,6 +3,8 @@
 $( function() {
 	var $pageflip = $("#pageflip"),
 		pageflip,
+		idleTime = 0,
+		startCount = false,
 		
 		/* Book configurations, each is an object, with the book id as identifier */
 		bookConfig = {
@@ -96,22 +98,26 @@ $( function() {
 				CustomPFEventHandler = {
 					onFlip: function( PN ) 	{ 
 						if( PN==18 ) $("#isflipping").addClass("selected");
+						 idleTime = 0;
+						 $("#returnBtn").stop().fadeOut();
 
 					},
 					onFlipEnd: function( PN ) {
 						if( PN==18 ) $("#isflipping").removeClass("selected");
+						 idleTime = 0;
+						 $("#returnBtn").stop().fadeOut();
 						
 
 					},
 					onTop: function( PN ) {
-						if( PN==21 && animmode==0 ) startLoop();
-						if( PN==18 ) $("#isontop").addClass("selected");
-						if(PN!=1)
-						 $("#returnBtn").delay( 5000 ).fadeIn();
+						if(PN==1){
+							 idleTime = 0;
+						 	$("#returnBtn").stop().fadeOut();
+
+						}
 					},
 					onTopEnd: function( PN ) {
-						if( PN==21 && animmode==0 ) stopLoop();
-						if( PN==18 ) $("#isontop").removeClass("selected");
+						 idleTime = 0;
 						 $("#returnBtn").stop().fadeOut();
 					},
 					onLoad: function( PN ) {
@@ -146,7 +152,23 @@ $( function() {
 					}
 				};
 			
+			 timerIncrement = function() {
+			    idleTime = idleTime + 1;
+			    if(pageflip.getPN() == 0 || !startCount){
+			    	//console.log("page"+pageflip.getPN());
+			    	idleTime=0;
+			    	//
+			    }
+			    //console.log(idleTime+ "22" + startCount + "page" +pageflip.getPN());
+			    if (idleTime > 5) { // 20 minutes
+			        
+					 $("#returnBtn").fadeIn();
+			    }else if (idleTime<=0){
+					 $("#returnBtn").fadeOut();
 
+			    }
+			}		
+			idleInterval = setInterval(timerIncrement, 1000); // 1 minute
 			gotoPage = function( p ) {
 				pageflip.gotoPage( p, true );
 			}
@@ -204,13 +226,16 @@ $( function() {
 				
 	/* start the first book automatically! */
 		startPageflip = function( id ) {
-			$("#returnBtn").stop().fadeOut();
+			
+		idleTime = 0;
+		$("#returnBtn").stop().fadeOut();
 		if( closing || id==loadedID ) return
 		if( loadedID ) {
 			/* we have a loaded book, so unload it first */
 			closing = true;
 			loadedID = undefined;
 			pageflip.closePageflip( function() { closing = false; startPageflip( id ); } );
+			startCount = false;
 		} else {
 			/* load the book */
 			loadedID = id;
@@ -219,11 +244,14 @@ $( function() {
 			$pageflip.pageflipInit( bookConfig[id], id );
 			pageflip = $pageflip.pageflip();
 			pageflip.setPFEventCallBack( CustomPFEventHandler );
+			startCount = true;
 		}
 	};
 	
 	if( bookConfig[id] && defaultID!=id ) {  startID = id; } 
 	else { if( $("#"+id).length ) gotoAnchor( "#"+id ); }
+
+	idleTime = 0;
 	$("#returnBtn").stop().fadeOut();
 
 	startPageflip( startID );
