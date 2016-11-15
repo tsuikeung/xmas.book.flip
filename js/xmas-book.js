@@ -27,7 +27,7 @@ $( function() {
 					FlipShadowOpacity: 0.2,
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
-					SecondaryDragArea: 72,
+					SecondaryDragArea: 172,
 					PinchZoom:true,
 
 					
@@ -61,7 +61,7 @@ $( function() {
 					FlipShadowOpacity: 0.2,
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
-					SecondaryDragArea: 72,
+					SecondaryDragArea: 172,
 					AutoFlipLoop: 1,
 					ControlbarFile: "common/controlbar_svg-eng.html",
 					SinglePageMode: true,
