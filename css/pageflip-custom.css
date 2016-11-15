@@ -53,6 +53,7 @@ img{
 	font-weight: bold;
 	width: 100px;
 		display: block;
+		letter-spacing: .15em;
 }
 #returnBtn{
 	position: absolute;
