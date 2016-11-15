@@ -2,47 +2,81 @@
 
 $( function() {
 	var $pageflip = $("#pageflip"),
-		pageflip,
-		
+		pageflip,				//API
+		banner = true,
+		onResize = function( e ) {
+			setBodyClass();
+			var h = window.innerHeight-menuH;
+			if( h>800 ) h=800;
+			if( screenW < 480 ) h=320;
+			$("#pageflip").css( { height: h } );
+		},
+		minW,
+		menuH,
+		screenW,
+		mobile,
+		desktop,
+		mode,
+		bclasses = [ "w320", "w480", "w768", "w1000" ],
+		mhb = (banner?126:80),
+		mhnm = (banner?46:0),
+		menuHs = [ mhnm, mhnm, mhb, mhb ],
+		minWs = [ 320, 480, 768, 964 ],
+		setBodyClass = function() {
+			var w = mobile? $(window).width(): window.screen.availWidth;
+			if( screenW!=w ) {
+			
+				if( desktop == mobile ) {
+					if( (mobile = !(desktop = w>1000)) ) {
+						w = $(window).width();
+					}
+				}
+				screenW = w;
+				if( w<480 ) mode = 0;
+				else if( w<768 ) mode = 1;
+				else if( w<964 ) mode = 2;
+				else mode = 3;
+				menuH = menuHs[mode], minW = minWs[mode];
+				
+				$("body").attr("class", bclasses[mode]);
+				$("#pageflip").css( { "min-width": minW } );
+				$("#main-container").css( { "min-width": minW, "padding-top": menuH } );
+				$("#menu-container").css( { height: menuH } );
+				
+			}
+		},
+	
 		/* Book configurations, each is an object, with the book id as identifier */
 		bookConfig = {
 				/* book ID - used as CSS class name */
 			chibook: {
 				/* Configuration options */
 					PageDataFile: "template1_meet_pageflip/meetpageflip.html",
-					PageWidth: 450,
-					PageHeight: 600,
-					//CoverWidth: 450,
-					//CoverHeight: 600,
+					PageWidth: 1748,
+					PageHeight: 2480,
 					FullScreenEnabled: true,
 					Transparency: true,
-					Margin: 32,
-					MarginBottom: 64,
-					AutoScale: true,
+					Margin: 0,
+					MarginBottom:50,
+					FullScale : true,
 					AlwaysOpened: false,
-					StartPage: 1,
-					AutoFlipLoop: -1,
-					//ClickZoom: true,
+					AutoFlipLoop: 1,
 					CenterSinglePage: true,
 					DropShadowOpacity: 0.3,
 					FlipTopShadowOpacity: 0.2,
 					FlipShadowOpacity: 0.2,
 					HardFlipOpacity: 0.3,
 					EmbossOpacity: 0.2,
-					SecondaryDragArea: 32,
-					//Thumbnails: true,
-					/*ThumbnailsToFront: true,
-					ThumbnailsAutoHide: 3000,
-					ThumbnailAlwaysCentered: true,
-					ThumbnailWidth: 92,
-					ThumbnailHeight: 120,*/
-					ControlbarFile: "controlbar_svg.html",
-					GoogleAnalytics: true,
+					SecondaryDragArea: 372,
+					
+					ControlbarFile: "common/controlbar_svg-chi.html",
+					SinglePageMode: true,
 					HashControl: true,
 					ShareLink: "http://pageflip-books.com",
 					ShareText: "Pageflip5, The Book Template for the Web",
 					ShareVia: "@MaccPageFlip",
 					ShareImageURL: "http://pageflip-books.com/images/shareimage.jpg",
+					ShowCopyright: false,
 					Copyright: Key.Copyright,
 					Key: Key.Key
 				},
@@ -233,6 +267,11 @@ $( function() {
 	if( bookConfig[id] && defaultID!=id ) {  startID = id; } 
 	else { if( $("#"+id).length ) gotoAnchor( "#"+id ); }
 
+	onResize();
+	setBodyClass();
+	
+	$(window).bind( "resize", onResize );
+	
 	startPageflip( startID );
 
 });
