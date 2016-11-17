@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Using turn.js and the new zoom feature</title>
-<meta name="viewport" content="width = 1050, user-scalable = no" />
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width = 700, user-scalable = no" />
 <link rel="icon" type="image/png" href="pics/favicon.png" />
 <script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
 <script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
@@ -24,13 +25,67 @@
 			<div ignore="1" class="previous-button"></div>
 		</div>
 	</div>
-	<div class="bottom">
-		<div id="slider-bar" class="turnjs-slider">
-			<div id="slider"></div>
-		</div>
-	</div>
+	
 </div>
+<div class="bottom">
+		<div id="pageflip-controls">
+	
+				<div class="langSelect pf-left-buttons pf-control-bar-button">
+				<a href="chi/index.html">中文</a>
+			
+				</div>
+				
+				<div class="pf-right-buttons">
+					
+					
+					<div id="b-pause" class="pf-control-bar-button pf-right" title="Stop Auto Flipping" style="display: none;"><svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				 x="0px" y="0px" width="22px" height="26px" viewBox="0 0 22 26" xml:space="preserve">
+			<g>
+				<path d="M10,16c0,1.104-0.896,2-2,2H7c-1.104,0-2-0.896-2-2v-6c0-1.104,0.896-2,2-2h1c1.104,0,2,0.896,2,2V16z"/>
+				<path d="M17,16c0,1.104-0.896,2-2,2h-1c-1.104,0-2-0.896-2-2v-6c0-1.104,0.896-2,2-2h1c1.104,0,2,0.896,2,2V16z"/>
+			</g>
+			</svg>
+			</div>
+					<div id="b-zoomin" class="pf-control-bar-button pf-right" title="Zoom In"><svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				 x="0px" y="0px" width="26px" height="26px" viewBox="0 0 26 26" xml:space="preserve">
+			<g>
+				<path d="M22.09,21.01l-4.643-4.641c0.609-0.98,0.967-2.133,0.967-3.369c0-3.537-2.877-6.414-6.414-6.414
+				c-3.535,0-6.414,2.877-6.414,6.414c0,3.535,2.879,6.414,6.414,6.414c1.288,0,2.485-0.385,3.491-1.041l4.618,4.617L22.09,21.01z
+				 M13,17h-2v-3H8v-2h3V9h2v3h3v2h-3V17z"/>
+			</g>
+			</svg></div>
+					<div id="b-zoomout" class="pf-control-bar-button pf-right" title="Zoom Out" style="display: none;"><svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				 x="0px" y="0px" width="26px" height="26px" viewBox="0 0 26 26" xml:space="preserve">
+			<g>
+				<path d="M22.09,21.01l-4.643-4.641c0.609-0.98,0.967-2.133,0.967-3.369c0-3.537-2.877-6.414-6.414-6.414
+				c-3.535,0-6.414,2.877-6.414,6.414c0,3.535,2.879,6.414,6.414,6.414c1.288,0,2.485-0.385,3.491-1.041l4.618,4.617L22.09,21.01z
+				 M8,14v-2h8v2H8z"/>
+			</g>
+			</svg>
+			</div>
+				</div>
+				<div class="pf-centered-buttons ">
+					
+					<div id="b-prev" class="pf-control-bar-button "><svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				 x="0px" y="0px" width="26px" height="26px" viewBox="0 0 26 26" xml:space="preserve">
+			<g>
+				<polygon points="7,13 17,23 19,21 11,13 19,5 17,3 	"/>
+			</g>
+			</svg></div>
+					
+					<div id="b-next" class="pf-control-bar-button "><svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				 x="0px" y="0px" width="26px" height="26px" viewBox="0 0 26 26" xml:space="preserve">
+			<g>
+				<polygon points="20,13 10,23 8,21 16,13 8,5 10,3 	"/>
+			</g>
+			</svg>
+			</div>
+					
+				</div>
+			</div>
+	</div>
 
+</div>
 <script type="text/javascript">
 
 function loadApp() {
@@ -50,6 +105,7 @@ function loadApp() {
 
 	flipbook.turn({
 			
+			display:"single",
 			// Magazine width
 
 			width: 600,
@@ -78,9 +134,10 @@ function loadApp() {
 
 			pages: 12,
 			//single page
-			display:"single",
 
 			// Events
+
+			display:"single",
 
 			when: {
 				turning: function(event, page, view) {
@@ -289,6 +346,11 @@ function loadApp() {
 		$('.magazine').turn('next');
 
 	});
+	$("#b-next").click(function() {
+		
+		$('.magazine').turn('next');
+
+	});
 
 	// Events for the next button
 	
@@ -313,7 +375,11 @@ function loadApp() {
 		$('.magazine').turn('previous');
 
 	});
+	$("#b-prev").click(function() {
+		
+		$('.magazine').turn('previous');
 
+	});
 
 	// Slider
 
@@ -353,6 +419,8 @@ function loadApp() {
 	resizeViewport();
 
 	$('.magazine').addClass('animated');
+
+  $('.magazine').css('overflow', 'visible');
 
 }
 
