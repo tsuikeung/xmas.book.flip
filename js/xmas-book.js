@@ -12,8 +12,8 @@ $( function() {
 			chibook: {
 				/* Configuration options */
 					PageDataFile: "template1_meet_pageflip/meetpageflip.html",
-					PageWidth: 300,
-					PageHeight: 426,
+					PageWidth: 400,
+					PageHeight: 568,
 					FullScreenEnabled: true,
 					Transparency: true,
 					Margin: 0,
@@ -47,8 +47,8 @@ $( function() {
 			engbook: {
 					/* Configuration options */					
 					PageDataFile: "template2_meet_pageflip/meetpageflip.html",
-						PageWidth: 300,
-					PageHeight: 426,
+					PageWidth: 400,
+					PageHeight: 568,
 					FullScreenEnabled: true,
 					Transparency: true,				
 					Margin: 0,
