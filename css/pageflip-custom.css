@@ -59,12 +59,15 @@ img{
 	position: absolute;
 	z-index: 9999;
 	height: 10%;
-	width: 10%;
+	width: 100%;
 	top: 70%;
-	 left: 50%;
+	 left: 0%;
 	display: block;
 	margin: auto;
-	   transform: translate(-50%, -50%);
+	/*
+	   transform: translate(-50%, -50%);	
+	   background: #fff;   */
+	cursor: pointer;
 
 }
 

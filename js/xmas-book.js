@@ -105,27 +105,52 @@ $( function() {
 				CustomPFEventHandler = {
 					onFlip: function( PN ) 	{ 
 						if( PN==18 ) $("#isflipping").addClass("selected");
-						 idleTime = 0;
-						 $("#returnBtn").stop().fadeOut();
+						 
+						if(PN<22){
+							// idleTime = 0;
+						 	//$("#returnBtn").stop().fadeOut();
+						 	 idleTime = 0;
+						 	$("#returnBtn").stop().fadeOut();
+
+						}
 
 					},
 					onFlipEnd: function( PN ) {
 						if( PN==18 ) $("#isflipping").removeClass("selected");
-						 idleTime = 0;
-						 $("#returnBtn").stop().fadeOut();
+						 
+						if(PN<22){
+							// idleTime = 0;
+						 	//$("#returnBtn").stop().fadeOut();
+						 	 idleTime = 0;
+						 	$("#returnBtn").stop().fadeOut();
+
+						}
 						
 
 					},
 					onTop: function( PN ) {
-						if(PN==1){
-							 idleTime = 0;
+						//alert(PN);
+						if(PN>=22){
+							// idleTime = 0;
+						 	//$("#returnBtn").stop().fadeOut();
+						 	$("#returnBtn").stop().fadeIn();
+						 	 idleTime = 0;
+
+						}else{
+						 	 idleTime = 0;
 						 	$("#returnBtn").stop().fadeOut();
 
 						}
 					},
 					onTopEnd: function( PN ) {
-						 idleTime = 0;
-						 $("#returnBtn").stop().fadeOut();
+						if(PN<22){
+							// idleTime = 0;
+						 	//$("#returnBtn").stop().fadeOut();
+						 	 idleTime = 0;
+						 //	$("#returnBtn").stop().fadeOut();
+
+						}
+						
 					},
 					onLoad: function( PN ) {
 						if( PN==11 ) videoInit();
@@ -139,12 +164,12 @@ $( function() {
 						if( PN==18 ) $("#isvisible").removeClass("selected");
 					},
 					onShow: function( PN ) {
-						if( PN==21 ) {
-							if( animmode==1 ) startLoop();
-							else setRot();
-							animation( animmode );
+						if(PN>=22){
+							// idleTime = 0;
+						 	//$("#returnBtn").stop().fadeOut();
+						 	$("#returnBtn").stop().fadeIn();
+
 						}
-						if( PN==18 ) $("#isvisible").addClass("selected");
 
 
 
@@ -158,7 +183,7 @@ $( function() {
 						setZoomFlag();
 					}
 				};
-			
+			/*
 			 timerIncrement = function() {
 			    idleTime = idleTime + 1;
 			    if(pageflip.getPN() == 0 || !startCount ||zooming){
@@ -174,8 +199,8 @@ $( function() {
 					 $("#returnBtn").fadeOut();
 
 			    }
-			}		
-			idleInterval = setInterval(timerIncrement, 1000); // 1 minute
+			}	*/	
+			//idleInterval = setInterval(timerIncrement, 1000); // 1 minute
 			gotoPage = function( p ) {
 				pageflip.gotoPage( p, true );
 			}
