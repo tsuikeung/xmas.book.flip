@@ -31,7 +31,7 @@
 		<div id="pageflip-controls">
 	
 				<div class="langSelect pf-left-buttons pf-control-bar-button">
-				<a href="chi/index.html">中文</a>
+				<a href="../index.html">ENG</a>
 			
 				</div>
 				
@@ -213,7 +213,7 @@ function loadApp() {
 					escTip = true;
 
 					$('<div />', {'class': 'exit-message'}).
-						html('<div>Press ESC to exit</div>').
+						html('<div>按 ESC 返回</div>').
 							appendTo($('body')).
 							delay(2000).
 							animate({opacity:0}, 500, function() {
@@ -370,7 +370,7 @@ function loadApp() {
 
 	$("#b-first").click(function() {
 		if($(".magazine").turn("page")==1){
-			alert("First Page Already");
+			alert("已經第一頁");
 			
 		}else{
 
@@ -382,7 +382,7 @@ function loadApp() {
 
 	$("#b-last").click(function() {
 		if($(".magazine").turn("page")==1){
-			alert("Last Page Already");
+			alert("已經尾頁");
 			
 		}else{
 			$('.magazine').turn("page", 12);
