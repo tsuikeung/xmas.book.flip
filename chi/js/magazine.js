@@ -137,7 +137,7 @@ function processRegion(region, regionType) {
 
 	switch (regionType) {
 		case 'link' :
-			alert("inside");
+			alert(data.url);
 			window.open(data.url);
 
 		break;
