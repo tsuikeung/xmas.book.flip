@@ -122,7 +122,7 @@ function regionClick(event) {
 		}, 100);
 		
 		var regionType = $.trim(region.attr('class').replace('region', ''));
-
+		alert();
 		return processRegion(region, regionType);
 
 	}
