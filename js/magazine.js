@@ -138,7 +138,7 @@ function processRegion(region, regionType) {
 	switch (regionType) {
 		case 'link' :
 
-			window.open(data.url);
+			 window.location = data.url;
 
 		break;
 		case 'zoom' :
